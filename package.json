@@ -1,0 +1,46 @@
+{
+  "name": "pika-suburi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@pika/pack": "^0.3.7",
+    "@pika/plugin-build-node": "^0.3.14",
+    "@pika/plugin-build-types": "^0.3.16",
+    "@pika/plugin-build-web": "^0.3.14",
+    "@pika/plugin-standard-pkg": "^0.3.14"
+  },
+  "scripts": {
+    "pika": "pack build"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg",
+        {
+          "exclude": [
+            "__tests__/**/*"
+          ]
+        }
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-types"
+      ]
+    ]
+  },
+  "esnext": "dist-src/index.js",
+  "module": "dist-web/index.js",
+  "types": "dist-types/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist-*/",
+    "assets/",
+    "bin/"
+  ]
+}
